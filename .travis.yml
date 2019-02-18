@@ -1,0 +1,19 @@
+---
+language: python
+services: docker
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+
+before_script:
+  - cd ../
+  - mv ansible-role-letsencrypt-wildcard-certificate create-letsencrypt-wildcard-certificate
+  - cd create-letsencrypt-wildcard-certificate
+
+install:
+  - pip install molecule docker
+
+script:
+  - molecule lint

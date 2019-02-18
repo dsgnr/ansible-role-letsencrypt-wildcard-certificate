@@ -1,0 +1,37 @@
+---
+certificate_tld: "handsoff.cloud"
+certificate_common_name: "*.{{ certificate_tld }}"
+certificate_remaining_days: 10
+certificate_sans: []
+certificate_directory: "/etc/ssl/{{ certificate_tld }}"
+certificate_files_mode: 0600
+certificate_files_owner: root
+certificate_files_group: root
+
+csr_filename: "{{ certificate_tld }}.csr"
+crt_filename: "{{ certificate_tld }}.crt"
+key_filename: "{{ certificate_tld }}.key"
+key_size: 2048
+
+copy_csr_full_path: ""
+copy_crt_full_path: ""
+copy_key_full_path: ""
+copy_intermediate_full_path: ""
+copy_fullchain_full_path: ""
+
+letsencrypt_email: ""
+letsencrypt_key_size: 2048
+letsencrypt_key_directory: /etc/ssl/lets_encrypt
+letsencrypt_key_filename: letsencrypt_account.key
+# Enable for testing:
+# letsencrypt_acme_directory: "https://acme-staging-v02.api.letsencrypt.org/directory"
+letsencrypt_acme_directory: "https://acme-v02.api.letsencrypt.org/directory"
+
+intermediate_filename: "{{ certificate_tld }}.intermediate.crt"
+fullchain_filename: "{{ certificate_tld }}.fullchain.pem"
+
+cloudflare_email: "{{ vault_cloudflare_email }}"
+cloudflare_api_key: "{{ vault_cloudflare_api_key }}"
+cloudflare_domain: "{{ certificate_tld }}"
+
+cleanup_all: no
